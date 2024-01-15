@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-48920123-31"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-48920123-31');
+</script>
+
+
+  <meta charset='utf-8' />
+<title>Erdélyi Mór fotográfiái a Kiscelli Múzeum Fényképgyűjteményében</title>
+<meta property="og:title" content="Erdélyi Mór fotográfiái a Kiscelli Múzeum Fényképgyűjteményében" />
+    <meta property="og:description" content=" " />
+    <meta property="og:image" content="" />
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+   <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+  <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
+  <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat&display=swap" rel="stylesheet">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.4/TweenMax.min.js'></script>
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin:0; 
+            padding:0; 
+            opacity: 1; 
+    background-color:#000000;
+            font-family: 'Barlow', sans-serif;
+            cursor:default;
+        overflow-x:hidden;height: 100vh;width: 100vw;
+    overflow-y:hidden;}
+    figure{margin:0;
+      padding:0;}
+       ::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;
+  }
+  :root{ scrollbar-width: none !important } 
+      
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      margin-left:30%;
+      width: 70%;
+    }
+
+    /* Popup styling */
+
+.erdelyikep{width:100%;height:auto;pointer-events: all!important}
+.erdelyikep3{width:100%;height:auto;pointer-events: all!important}
+.erdelyikep:hover{cursor: pointer}
+.erdelyikep2{width:50%;margin-left:25%;height:auto;padding-top:2vh}
+    .popup .mapboxgl-popup-content {
+        background-color: rgba(221,221,221,0.8);
+        color: black;font-size:1vw;line-height: 1.3vw;
+        width: 20vw;
+}
+.mapboxgl-popup-tip {
+  display:block;
+  opacity:0.8;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: rgba(221,221,221,0.8);
+    }
+
+ .mapboxgl-ctrl-bottom-right .mapboxgl-ctrl-group {
+  background-color: rgba(221,221,221,0.8);
+
+}
+
+.mapboxgl-ctrl-group:not(:empty) {
+box-shadow: 0 0 0 2px rgba(0,0,0,0);
+}
+
+
+.mapboxgl-ctrl-group button {border: 1.5px solid black}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib{background-color: rgba(0,0,0,0);color:#532509}
+.mapboxgl-ctrl-attrib a{color:#532509}
+
+.mapbox-attribution-container {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  display: block;
+  margin: 0 10 5;
+  color:#532509;
+  z-index:15000;
+  background-color:rgba(255,255,255,0);
+  padding-right:4px;
+  padding-left:4px;
+  padding-bottom:2px;
+}
+.mapbox-attribution-container a{
+   color:#532509;
+  text-decoration: none;
+} 
+
+ .map-overlay {
+        position: absolute;
+        width: 30%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        font: 14px/20px 'Barlow', sans-serif;
+        
+        background-color: #eeeeee;
+        max-height: 100%;
+        overflow: hidden;
+        padding-bottom:3%;
+    }
+
+
+    .map-overlay fieldset {
+        display: none;
+        background: #eeeeee;
+        border: none;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .map-overlay input {
+        display: block;
+        border: none;
+        width: 100%;
+        border-radius: 3px;
+        padding: 10px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .map-overlay .listing {
+        overflow: auto;
+        max-height: 55%;
+
+    }
+
+    .map-overlay .listing > * {
+        display: block;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    .map-overlay .listing a {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        color: black;
+        text-decoration: none;
+    }
+
+    .map-overlay .listing a:last-child {
+        border: none;
+    }
+
+    .map-overlay .listing a:hover {
+        background: #dddddd;
+        color: black;
+    }
+
+
+#infopanel2{width:30%;height:5vh;background-color: #eeeeee; /* Replace 'your-image.jpg' with the actual image file path */
+    overflow-y:auto!important;opacity:;
+   z-index:101;display:block;position:fixed;left:0;transition:0.5s}
+
+#infopanel{width:30%;height:95vh;margin-top:5vh;background-color: #eeeeee; /* Replace 'your-image.jpg' with the actual image file path */
+    overflow-y:auto!important;opacity:;
+   z-index:100;display:block;position:fixed;left:0;transition:0.5s}
+
+   .infopanelmarginleft{margin-left:-30%}
+
+   .infopanelmarginleft2{margin-left:0%}
+
+.closebutton{position:absolute;left:0;top:0;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:black;transition:1s; z-index:9999999999;}
+
+.closebutton2{position:absolute;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:white;transition:1s;mix-blend-mode: difference;}
+.closebutton3{position:absolute;left:0;top:0;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:white;transition:1s;z-index:9999999999;}
+
+.bezar{margin-left:0.5vw;margin-top:0.15vh;font-size:1.2vw}
+#kreativitasclosea1{opacity:0.7;}
+#kreativitasclosea2{opacity:0.8;}
+  .mdiv {
+  height: 1.6vw;
+  width: 3px;
+  margin-left: 12px;
+  background-color: black;
+  transform: rotate(45deg);
+  Z-index:102;opacity:0.7;
+}
+
+.md {
+  height: 1.6vw;
+  width: 3px;
+ background-color: black;
+  transform: rotate(90deg);
+  Z-index: 101;opacity:0.7;
+}
+
+.mdiv2 {
+  height: 1.6vw;
+  width: 3px;
+  margin-left: 12px;
+  background-color: white;
+  transform: rotate(45deg);
+  Z-index:102;opacity:0.8;
+}
+
+.md2 {
+  height: 1.6vw;
+  width: 3px;
+ background-color: white;
+  transform: rotate(90deg);
+  Z-index: 101;opacity:0.8;
+}
+
+.kreativitascloseid {
+  width: 2vw;
+  height: 2vw;
+  
+}
+
+#textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+#textpanel2{margin-top:-4vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+
+#textpanela{}
+#textpanelb{}
+#textpanelc{}
+
+.custombutton{opacity:0;pointer-events: none;font-size: 0;height:0;}
+
+
+#verzo{width:90%;margin-left:5%;padding-top:1vh;padding-bottom:1vh}
+
+.custombutton2{text-align: center;padding-bottom:1vh;padding-top:1vh;width:80%;margin-left:10%;border:1px solid black;margin-top:1vh;margin-bottom:5px;border-radius:5px }
+
+
+.custombutton2:hover{ background: #dddddd;cursor: pointer;font-weight: 600;color:black}
+
+#impresszum{bottom:0;width:100%;background-color:#eeeeee;color:black;height:auto;z-index:10;display:block;position:absolute;padding-top:0.5vh;padding-bottom:0.5vh;text-align: center}
+#impresszum span:hover{font-weight: 600;cursor: pointer;}
+
+
+.fullimg{display: flex;margin: 0;
+      justify-content: center;
+      align-items: center;height: 90vh;padding-top:5vh;padding-bottom:5vh;position:relative;z-index:50000000;background-color:rgba(0,0,0,0.8);pointer-events: none;opacity:0;transition:0.3s}
+
+      .fullimgimg {
+      /* Optional: Add max-width: 100% to ensure the image doesn't exceed its natural size */
+      max-width: 100%;
+      /* Optional: Add max-height: 100% to ensure the image doesn't exceed its natural size */
+      max-height: 100%;
+    }
+
+    #closeuj{opacity:0;z-index:500000000000000001;display:block;pointer-events: none}
+
+
+    .circletext {
+  position: fixed;
+  transform-origin: center center;
+  top: 3vh;
+  left: 0;
+  
+  pointer-events: none;font-weight: bold;font-size: 1.2vw;
+transform: scale(1);;mix-blend-mode: difference;color: white;opacity: 0;
+z-index:500000000000000001;}
+
+#stilizaltgomb{display: none;
+}
+
+.sliderposition{position:relative;z-index:9;width: 100%;padding-top: 5px;padding-bottom: 5px;text-align: center;font-weight: 500!important;display:block}
+
+ .slider {
+  -webkit-appearance: none;
+  width: 80%!important;
+  margin-left:10%!important;
+  height: 20px;
+  background: #dddddd!important;
+  outline: none;
+  opacity: 1;padding:0!important;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #000000!important;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #000000!important;
+  cursor: pointer;
+}
+
+
+#kreativitasclose3{display:none}
+
+
+
+
+.valtogomb3{padding:4px;margin-top: 0.8vh;margin-bottom: 0.8vh;
+      color:black;position:fixed;margin-top:2vh;z-index:50;margin-left:2vw;
+      background-color:#eeeeee;border-radius:3px; display:none;border: 1px solid black;}
+
+      .valtogomb3:hover{background: #dddddd;cursor: pointer;font-weight: 600;color:black}
+
+
+#nyitoanim{width:100vw;height:100vh;position:fixed;z-index:99999999999;display:block;background-color:rgba(0,0,0,0.6);display: flex;margin: 0;
+      justify-content: center;
+      align-items: center;}
+
+ #nyitoerdelyi{display: inline-block;width:25vw;height:auto;z-index:2}
+
+ #nyitoerdelyiszoveg{color:white;display:inline-block;;width:25vw;margin-left:-25vw;font-size:2.3vw;line-height: 4vw;animation: moveAnimation 1.5s ease-in-out forwards;animation-delay: 1s;}
+
+ @keyframes moveAnimation {
+  from {
+    margin-left: -25vw;
+  }
+  to {
+    margin-left: 5vw;
+  }
+}
+.container2{height:90vh;}
+
+
+.huen{position:fixed;
+                      width:auto;
+                      min-width: 25px;
+                      right:1vw;
+                      margin-top:1vw;color:white;
+                    mix-blend-mode: difference;
+                      z-index:150;}
+                      .huentext{font-size:18px;
+                                cursor:pointer;
+                                text-align:right;}
+
+                                .huen:hover{font-weight: bold}
+
+
+@media only screen and (max-width: 900px)  and (orientation: portrait){
+
+
+
+#nyitoanim{width:100vw;height:100vh;position:fixed;z-index:99999999999;display:block;background-color:rgba(0,0,0,0.6);display: flex;margin: 0;
+      justify-content: center;
+      align-items: center;}
+
+ #nyitoerdelyi{display: inline-block;width:60vw;height:auto;margin-bottom:0vh;animation: moveAnimation2 1.5s ease-in-out forwards;animation-delay: 1s;z-index:2;}
+
+ #nyitoerdelyiszoveg{color:white;display:inline-block;width:60vw;margin-left:-60vw;font-size:5.5vw;line-height: 7vw;animation: moveAnimation 1.5s ease-in-out forwards;animation-delay: 1s;margin-top:0vh}
+
+ @keyframes moveAnimation {
+  from {
+    margin-top:0vh
+  }
+  to {
+    margin-top:25vh
+  }
+}
+ @keyframes moveAnimation2 {
+  from {
+    margin-bottom:0vh
+  }
+  to {
+    margin-bottom:25vh
+  }
+}
+.container2{height:90vh;margin-top:20vh}
+
+
+#kreativitasclose3{display:block;position:fixed;transition: 0.5s;width:6vw;height:6vw}
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      margin-left:0%;
+      width: 100%;
+    }
+
+    /* Popup styling */
+
+.erdelyikep{width:100%;height:auto;pointer-events: all!important}
+.erdelyikep3{width:100%;height:auto;pointer-events: all!important}
+.erdelyikep:hover{cursor: pointer}
+.erdelyikep2{width:50%;margin-left:25%;height:auto;padding-top:2vh}
+    .popup .mapboxgl-popup-content {
+        background-color: rgba(221,221,221,0.8);
+        color: black;font-size:3vw;line-height: 3vw;
+        width: 50vw;
+}
+.mapboxgl-popup-tip {
+  display:block;
+  opacity:0.8;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: rgba(221,221,221,0.8);
+    }
+
+ .mapboxgl-ctrl-bottom-right .mapboxgl-ctrl-group {
+  background-color: rgba(221,221,221,0.8);
+
+}
+
+.mapboxgl-ctrl-group:not(:empty) {
+box-shadow: 0 0 0 2px rgba(0,0,0,0);
+}
+
+
+.mapboxgl-ctrl-group button {border: 1.5px solid black}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib{background-color: rgba(0,0,0,0);color:#532509}
+.mapboxgl-ctrl-attrib a{color:#532509}
+
+.mapbox-attribution-container {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  display: block;
+  margin: 0 10 5;
+  color:#532509;
+  z-index:15000;
+  background-color:rgba(255,255,255,0);
+  padding-right:4px;
+  padding-left:4px;
+  padding-bottom:2px;
+}
+.mapbox-attribution-container a{
+   color:#532509;
+  text-decoration: none;
+} 
+
+ .map-overlay {
+  transition:0.5s;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;z-index:10;
+        left: 0;
+        font: 14px/20px 'Barlow', sans-serif;
+        
+        background-color: #eeeeee;
+        max-height: 100%;
+        overflow: hidden;
+        padding-bottom:3%;
+    }
+
+
+    .map-overlay fieldset {
+        display: none;
+        background: #eeeeee;
+        border: none;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .map-overlay input {
+        display: block;
+        border: none;
+        width: 100%;
+        border-radius: 3px;
+        padding: 10px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .map-overlay .listing {
+        overflow: auto;
+        max-height: 55%;
+
+    }
+
+    .map-overlay .listing > * {
+        display: block;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    .map-overlay .listing a {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        color: black;
+        text-decoration: none;
+    }
+
+    .map-overlay .listing a:last-child {
+        border: none;
+    }
+
+    .map-overlay .listing a:hover {
+        background: #dddddd;
+        color: black;
+    }
+
+
+#infopanel2{width:100%;height:5vh;background-color: #eeeeee; /* Replace 'your-image.jpg' with the actual image file path */
+    overflow-y:auto!important;opacity:;
+   z-index:101;display:block;position:fixed;left:0;transition:0.5s}
+
+#infopanel{width:100%;height:95vh;margin-top:5vh;background-color: #eeeeee; /* Replace 'your-image.jpg' with the actual image file path */
+    overflow-y:auto!important;opacity:;
+   z-index:100;display:block;position:fixed;left:0;transition:0.5s}
+
+   .infopanelmarginleft{margin-left:-100%}
+
+   .infopanelmarginleft2{margin-left:-100%}
+
+.closebutton{position:absolute;left:0;top:0;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:black;transition:1s; z-index:9999999999;}
+
+.closebutton2{position:absolute;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:white;transition:1s;}
+.closebutton3{position:absolute;left:0;top:0;margin-top:1vh;margin-left:-100%;width: auto;background-color:rgba(0,0,0,0);display:flex;color:white;transition:1s;z-index:100;}
+
+.bezar{margin-left:5.5vw;margin-top:0.15vh;font-size:4vw}
+#kreativitasclosea1{opacity:0.7;}
+#kreativitasclosea2{opacity:0.8;}
+  .mdiv {
+  height: 6vw;
+  width: 3px;
+  margin-left: 12px;
+  background-color: black;
+  transform: rotate(45deg);
+  Z-index:102;opacity:0.7;
+}
+
+.md {
+  height: 6vw;
+  width: 3px;
+ background-color: black;
+  transform: rotate(90deg);
+  Z-index: 101;opacity:0.7;
+}
+
+.mdiv2 {
+  height: 6vw;
+  width: 3px;
+  margin-left: 12px;
+  background-color: white;
+  transform: rotate(45deg);
+  Z-index:102;opacity:0.8;
+}
+
+.md2 {
+  height: 6vw;
+  width: 3px;
+ background-color: white;
+  transform: rotate(90deg);
+  Z-index: 101;opacity:0.8;
+}
+
+.kreativitascloseid {
+  width: 2vw;
+  height: 2vw;
+  
+}
+
+#textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+#textpanel2{margin-top:-4vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+
+#textpanela{}
+#textpanelb{}
+#textpanelc{}
+
+.custombutton{opacity:0;pointer-events: none;font-size: 0;height:0;}
+
+
+#verzo{width:90%;margin-left:5%;padding-top:1vh;padding-bottom:1vh}
+
+.custombutton2{text-align: center;padding-bottom:1vh;padding-top:1vh;width:80%;margin-left:10%;border:1px solid black;margin-top:1vh;margin-bottom:5px;border-radius:5px }
+
+
+.custombutton2:hover{ background: #dddddd;cursor: pointer;font-weight: 600;color:black}
+
+#impresszum{bottom:0;width:100%;background-color:#eeeeee;color:black;height:auto;z-index:10;display:block;position:absolute;padding-top:0.5vh;padding-bottom:0.5vh;text-align: center}
+#impresszum span:hover{font-weight: 600;cursor: pointer;}
+
+
+.fullimg{display: flex;margin: 0;
+      justify-content: center;
+      align-items: center;height: 90vh;padding-top:5vh;padding-bottom:5vh;position:relative;z-index:50000000;background-color:rgba(0,0,0,0.8);pointer-events: none;opacity:0;transition:0.3s}
+
+      .fullimgimg {
+      /* Optional: Add max-width: 100% to ensure the image doesn't exceed its natural size */
+      max-width: 100%;
+      /* Optional: Add max-height: 100% to ensure the image doesn't exceed its natural size */
+      max-height: 100%;
+    }
+
+    #closeuj{opacity:0;z-index:500000000000000001;display:block;pointer-events: none}
+
+
+    .circletext {
+  position: fixed;
+  transform-origin: center center;
+  top: 3vh;
+  left: 0;
+  
+  pointer-events: none;font-weight: bold;font-size: 1.2vw;
+transform: scale(1);;mix-blend-mode: difference;color: white;opacity: 0;
+z-index:500000000000000001;}
+
+#stilizaltgomb{display: none;
+}
+
+.sliderposition{position:relative;z-index:9;width: 100%;padding-top: 5px;padding-bottom: 5px;text-align: center;font-weight: 500!important;display:block}
+
+ .slider {
+  -webkit-appearance: none;
+  width: 80%!important;
+  margin-left:10%!important;
+  height: 20px;
+  background: #dddddd!important;
+  outline: none;
+  opacity: 1;padding:0!important;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #000000!important;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #000000!important;
+  cursor: pointer;
+}
+
+
+.valtogomb3{padding:4px;margin-top: 0.8vh;margin-bottom: 0.8vh;
+      color:black;position:fixed;margin-top:2vh;z-index:1;margin-left:2vw;
+      background-color:#eeeeee;border-radius:3px; display:block;border: 1px solid black;}
+}
+
+
+
+ @media only screen and (max-width: 900px)  and (orientation: landscape){
+
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 100vh;
+      margin-left:40%;
+      width: 60%;
+    }
+
+    /* Popup styling */
+
+.erdelyikep{width:100%;height:auto;pointer-events: all!important}
+.erdelyikep3{width:100%;height:auto;pointer-events: all!important}
+.erdelyikep:hover{cursor: pointer}
+.erdelyikep2{width:50%;margin-left:25%;height:auto;padding-top:2vh}
+    .popup .mapboxgl-popup-content {
+        background-color: rgba(221,221,221,0.8);
+        color: black;font-size:1.3vw;line-height: 1.8vw;
+        width: 30vw;
+}
+.mapboxgl-popup-tip {
+  display:block;
+  opacity:0.8;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip {
+    border-bottom-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+    border-right-color: rgba(221,221,221,0.8);
+    }
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+    border-left-color: rgba(221,221,221,0.8);
+    }
+
+ .mapboxgl-ctrl-bottom-right .mapboxgl-ctrl-group {
+  background-color: rgba(221,221,221,0.8);
+
+}
+
+.mapboxgl-ctrl-group:not(:empty) {
+box-shadow: 0 0 0 2px rgba(0,0,0,0);
+}
+
+
+.mapboxgl-ctrl-group button {border: 1.5px solid black}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib{background-color: rgba(0,0,0,0);color:#532509}
+.mapboxgl-ctrl-attrib a{color:#532509}
+
+.mapbox-attribution-container {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  display: block;
+  margin: 0 10 5;
+  color:#532509;
+  z-index:15000;
+  background-color:rgba(255,255,255,0);
+  padding-right:4px;
+  padding-left:4px;
+  padding-bottom:2px;
+}
+.mapbox-attribution-container a{
+   color:#532509;
+  text-decoration: none;
+} 
+
+ .map-overlay {
+        position: absolute;
+        width: 40%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        font: 14px/20px 'Barlow', sans-serif;
+        
+        background-color: #eeeeee;
+        max-height: 100%;
+        overflow: hidden;
+        padding-bottom:3%;
+    }
+
+
+    .map-overlay fieldset {
+        display: none;
+        background: #eeeeee;
+        border: none;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .map-overlay input {
+        display: block;
+        border: none;
+        width: 100%;
+        border-radius: 3px;
+        padding: 10px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .map-overlay .listing {
+        overflow: auto;
+        max-height: 55%;
+
+    }
+
+    .map-overlay .listing > * {
+        display: block;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    .map-overlay .listing a {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        color: black;
+        text-decoration: none;
+    }
+
+    .map-overlay .listing a:last-child {
+        border: none;
+    }
+
+    .map-overlay .listing a:hover {
+        background: #dddddd;
+        color: black;
+    }
+
+
+#infopanel2{width:40%;height:6vh;background-color: #eeeeee; /* Replace 'your-image.jpg' with the actual image file path */
+    overflow-y:auto!important;opacity:;
+   z-index:101;display:block;position:fixed;left:0;transition:0.5s}
+
+#infopanel{width:40%;height:94vh;margin-top:6vh;background-color: #eeeeee; /* Replace 'your-image.jpg' with the actual image file path */
+    overflow-y:auto!important;opacity:;
+   z-index:100;display:block;position:fixed;left:0;transition:0.5s}
+
+   .infopanelmarginleft{margin-left:-40%}
+
+   .infopanelmarginleft2{margin-left:0%}
+
+.closebutton{position:absolute;left:0;top:0;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:black;transition:1s; z-index:9999999999;}
+
+.closebutton2{position:absolute;;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:white;transition:1s;}
+.closebutton3{position:absolute;left:0;top:0;margin-top:1vh;margin-left:1vw;width: auto;background-color:rgba(0,0,0,0);display:flex;color:white;transition:1s;z-index:9999999999;}
+
+.bezar{margin-left:1vw;margin-top:-0.1vh;font-size:1.7vw}
+#kreativitasclosea1{opacity:0.7;}
+#kreativitasclosea2{opacity:0.8;}
+  .mdiv {
+  height: 2vw;
+  width: 3px;
+  margin-left: 12px;
+  background-color: black;
+  transform: rotate(45deg);
+  Z-index:102;opacity:0.7;
+}
+
+.md {
+  height: 2vw;
+  width: 3px;
+ background-color: black;
+  transform: rotate(90deg);
+  Z-index: 101;opacity:0.7;
+}
+
+.mdiv2 {
+  height: 2vw;
+  width: 3px;
+  margin-left: 12px;
+  background-color: white;
+  transform: rotate(45deg);
+  Z-index:102;opacity:0.8;
+}
+
+.md2 {
+  height: 2vw;
+  width: 3px;
+ background-color: white;
+  transform: rotate(90deg);
+  Z-index: 101;opacity:0.8;
+}
+
+.kreativitascloseid {
+  width: 2vw;
+  height: 2vw;
+  
+}
+
+#textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+#textpanel2{margin-top:-3vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+
+#textpanela{}
+#textpanelb{}
+#textpanelc{}
+
+.custombutton{opacity:0;pointer-events: none;font-size: 0;height:0;}
+
+
+#verzo{width:90%;margin-left:5%;padding-top:1vh;padding-bottom:1vh}
+
+.custombutton2{text-align: center;padding-bottom:1vh;padding-top:1vh;width:80%;margin-left:10%;border:1px solid black;margin-top:1vh;margin-bottom:5px;border-radius:5px }
+
+
+.custombutton2:hover{ background: #dddddd;cursor: pointer;font-weight: 600;color:black}
+
+#impresszum{bottom:0;width:100%;background-color:#eeeeee;color:black;height:auto;z-index:10;display:block;position:absolute;padding-top:0.5vh;padding-bottom:0.5vh;text-align: center}
+#impresszum span:hover{font-weight: 600;cursor: pointer;}
+
+
+.fullimg{display: flex;margin: 0;
+      justify-content: center;
+      align-items: center;height: 90vh;padding-top:5vh;padding-bottom:5vh;position:relative;z-index:50000000;background-color:rgba(0,0,0,0.8);pointer-events: none;opacity:0;transition:0.3s}
+
+      .fullimgimg {
+      /* Optional: Add max-width: 100% to ensure the image doesn't exceed its natural size */
+      max-width: 100%;
+      /* Optional: Add max-height: 100% to ensure the image doesn't exceed its natural size */
+      max-height: 100%;
+    }
+
+    #closeuj{opacity:0;z-index:500000000000000001;display:block;pointer-events: none}
+
+
+    .circletext {
+  position: fixed;
+  transform-origin: center center;
+  top: 3vh;
+  left: 0;
+  
+  pointer-events: none;font-weight: bold;font-size: 1.2vw;
+transform: scale(1);;mix-blend-mode: difference;color: white;opacity: 0;
+z-index:500000000000000001;}
+
+#stilizaltgomb{display: none;
+}
+
+.sliderposition{position:relative;z-index:9;width: 100%;padding-top: 5px;padding-bottom: 5px;text-align: center;font-weight: 500!important;display:block}
+
+ .slider {
+  -webkit-appearance: none;
+  width: 80%!important;
+  margin-left:10%!important;
+  height: 20px;
+  background: #dddddd!important;
+  outline: none;
+  opacity: 1;padding:0!important;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #000000!important;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #000000!important;
+  cursor: pointer;
+}
+
+
+#kreativitasclose3{display:none}
+
+
+
+
+.valtogomb3{padding:4px;margin-top: 0.8vh;margin-bottom: 0.8vh;
+      color:black;position:fixed;margin-top:2vh;z-index:50;margin-left:2vw;
+      background-color:#eeeeee;border-radius:3px; display:none;border: 1px solid black;}
+
+      .valtogomb3:hover{background: #dddddd;cursor: pointer;font-weight: 600;color:black}
+
+
+ }
+
+
+ 
+
+
+  </style>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div id="nyitoanim"><img id="nyitoerdelyi" src="https://cdn.jsdelivr.net/gh/szabokrissz96/kiscellierdelyimor/erdelyiportre2.jpg"><div id="nyitoerdelyiszoveg">Erdélyi Mór fotográfiái a Kiscelli Múzeum Fényképgyűjteményében</div></div>
+
+  <div class="huen"><div class="huentext"><href onclick='redirect_Page3(this)'>EN</href></div></div> 
+
+  <div id='map'></div>
+
+ <div class="valtogomb3">Menü</div>
+
+<div id="infopanel" class="infopanelmarginleft">
+
+      <div id="textpanel">
+
+<div id="textpanela"></div>
+<div id="textpanelb"></div>
+<div id="textpanelc"></div>
+         
+
+
+      </div>
+      <div id="textpanel2">
+        
+         
+
+
+      </div></div>
+
+<div id="infopanel2" class="infopanelmarginleft">
+<div class="closebutton"id="kreativitasclose1">
+         <div class="kreativitascloseid">
+  <div class="mdiv">
+    <div class="md"></div>
+  </div>
+</div>
+<div class="bezar" id="kreativitasclosea1">Bezárás</div>
+     </div>
+
+     
+         
+
+
+      </div></div>
+
+<div id="kreativitasclose3"class="closebutton3">
+         <div class="kreativitascloseid">
+  <div class="mdiv">
+    <div class="md"></div>
+  </div>
+</div>
+
+     </div>
+
+<div class="map-overlay infopanelmarginleft2">
+
+  <div id="kapcsolat"class="custombutton">Alaphelyzet</div>
+
+
+
+  <img id="verzo"src="https://atlo.team/wp-content/uploads/2023/12/verzo.png">
+    <div id="tobbinfo" class="custombutton2"style="margin-bottom:1vh">Erdélyi Mór (1866-1934)</div>
+      <div id="kapcsolat2"class="custombutton2">Térkép alaphelyzetbe állítása</div>
+
+      <div  class="custombutton2" id="stilizaltgomb">Alaptérkép</div>
+     <div class="custombutton2"id="szatelitgomb">Műholdtérkép</div>
+
+     <div class="sliderposition"> 
+<label>Változtassa a korabeli térkép áttetszőségét a csúszkával: <span id="slider-value">0%</span></label>
+        <input style="cursor: ew-resize;margin-top:10px"id="slider" class="slider" type="range" min="0" max="100" step="0" value="0"></div>
+
+    <fieldset>
+        <input id="feature-filter" type="text" placeholder="Keressen utcanévre, évre vagy leltári számra!">
+    </fieldset>
+    <div id="feature-listing" class="listing"></div>
+<div id="impresszum"><span>Impresszum</span></div>
+</div>
+
+
+<div id="circletext" class="circletext"></div>
+
+
+
+<div class="fullimg">
+  <div class="container2"><div id="closeuj">
+<div class="closebutton2"id="kreativitasclose2">
+         <div class="kreativitascloseid">
+  <div class="mdiv2">
+    <div class="md2"></div>
+  </div>
+</div>
+<div class="bezar" id="kreativitasclosea2">Bezárás</div>
+     </div></div>
+  <img class="fullimgimg" src=""></div></div>
+
+
+ <script>
+    $(document).ready(function() {
+      // Wait for 3.5 seconds before fading out the div
+      setTimeout(function() {
+        $("#nyitoanim").fadeOut();
+      }, 3500); // 3.5 seconds in milliseconds
+    });
+  </script>
+
+ <script>
+
+     jQuery(function(){
+   
+   jQuery('#stilizaltgomb').click();
+  
+
+   });
+
+     
+ </script>
+
+<script>
+$('#kapcsolat').on('click', function() {
+       
+        if (screen && screen.width > 768) {  
+      map.flyTo({
+ center: [19.04213, 47.49799],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 13.6,// starting zoom
+});};
+
+if (screen && screen.width <= 768 && navigator.userAgent.match(/iPad|Android|webOS|iPhone|iPod|Blackberry/i)) {
+ map.flyTo({
+center: [19.03961, 47.49620],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 12.8,// starting zoom
+});};
+
+ if (screen && screen.width > 768 && navigator.userAgent.match(/iPad|Android|webOS|iPhone|iPod|Blackberry/i)) {
+ map.flyTo({
+center: [19.04019, 47.49807],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 12.65,// starting zoom
+});};
+
+});
+
+$('#kapcsolat2').on('click', function() {
+       
+       if (screen && screen.width > 768) {  
+      map.flyTo({
+ center: [19.04213, 47.49799],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 13.6,// starting zoom
+});};
+
+if (screen && screen.width <= 768 && navigator.userAgent.match(/iPad|Android|webOS|iPhone|iPod|Blackberry/i)) {
+ map.flyTo({
+center: [19.03961, 47.49620],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 12.8,// starting zoom
+});};
+
+ if (screen && screen.width > 768 && navigator.userAgent.match(/iPad|Android|webOS|iPhone|iPod|Blackberry/i)) {
+ map.flyTo({
+center: [19.04019, 47.49807],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 12.65,// starting zoom
+});};
+    
+filterEl.value = '';});
+
+</script>
+
+
+<script>
+
+$('#szatelitgomb').on('click', function() {
+  filterEl.value = '';
+    $("#stilizaltgomb").css('display','block');
+     $("#szatelitgomb").css('display','none');
+     $("#slider").val(parseInt($("#slider").val())+0);  
+               $("#slider").trigger('change');
+         
+         map.setStyle('mapbox://styles/atlo/clr65dvvg01gw01pjge3raquk');
+         $(document).ready(function () {
+      $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        url: 'https://docs.google.com/spreadsheets/d/13V8XkBe9W9_q7UDKcNMwCXKQsA7rQIiw0LAu91RGolk/gviz/tq?tqx=out:csv&sheet=pontok',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+
+
+      function makeGeoJSON(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+         map.on('style.load', function() {
+            map.setPaintProperty(
+                'ujoldbp-335h7x',
+                'raster-opacity',
+                parseInt(($("#slider").val())) / 100
+            );
+
+             map.addSource('ujoldbp-335h7x', {
+            'type': 'raster',
+            'url': 'mapbox://atlo.5t5247vs'
+        });
+        map.addLayer({
+            'id': 'ujoldbp-335h7x',
+            'source': 'ujoldbp-335h7x',
+            'type': 'raster',
+            'layout': {
+            'visibility':'visible'},
+            'paint':{'raster-opacity':0}
+        });
+
+ map.addLayer({
+'id': 'csvData2',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+'type': 'circle',
+'paint': {
+'circle-color': '#4264fb',
+'circle-radius': 4,
+'circle-stroke-width': 0,
+'circle-stroke-color': '#ffffff',
+'circle-opacity':0,
+}
+});
+ 
+              map.addLayer({
+              'id': 'csvData',
+              'type': 'symbol',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+               'layout': {
+     "visibility": "visible",
+     "icon-image": "attraction1",
+     "icon-size":1.3,
+     "icon-padding":0
+},
+              'paint': {}
+            });
+
+            
+
+          });});}});});
+
+
+
+
+
+$('#stilizaltgomb').on('click', function() {
+  filterEl.value = '';
+    $("#stilizaltgomb").css('display','none');
+     $("#szatelitgomb").css('display','block');
+     $("#slider").val(parseInt($("#slider").val())+0);  
+               $("#slider").trigger('change');
+         
+         map.setStyle('mapbox://styles/atlo/clr66xmlv01cr01r56zbld1u1');
+         $(document).ready(function () {
+      $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        url: 'https://docs.google.com/spreadsheets/d/13V8XkBe9W9_q7UDKcNMwCXKQsA7rQIiw0LAu91RGolk/gviz/tq?tqx=out:csv&sheet=pontok',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+
+
+      function makeGeoJSON(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+         map.on('style.load', function() {
+            map.setPaintProperty(
+                'ujoldbp-335h7x',
+                'raster-opacity',
+                parseInt(($("#slider").val())) / 100
+            );
+
+             map.addSource('ujoldbp-335h7x', {
+            'type': 'raster',
+            'url': 'mapbox://atlo.5t5247vs'
+        });
+        map.addLayer({
+            'id': 'ujoldbp-335h7x',
+            'source': 'ujoldbp-335h7x',
+            'type': 'raster',
+            'layout': {
+            'visibility':'visible'},
+            'paint':{'raster-opacity':0}
+        });
+
+ map.addLayer({
+'id': 'csvData2',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+'type': 'circle',
+'paint': {
+'circle-color': '#4264fb',
+'circle-radius': 4,
+'circle-stroke-width': 0,
+'circle-stroke-color': '#ffffff',
+'circle-opacity':0,
+}
+});
+ 
+              map.addLayer({
+              'id': 'csvData',
+              'type': 'symbol',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+               'layout': {
+     "visibility": "visible",
+     "icon-image": "attraction1",
+     "icon-size":1.3,
+     "icon-padding":0
+},
+              'paint': {}
+            });
+            
+            
+
+          });});}});});
+
+
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+     
+
+     
+      // Automatically click the button after 500 milliseconds (0.5 seconds)
+      setTimeout(function () {
+        document.getElementById('kapcsolat').click();
+      }, 3800);
+    });
+  </script>
+
+
+ 
+ <script>
+
+
+
+
+
+    var transformRequest = (url, resourceType) => {
+      var isMapboxRequest =
+        url.slice(8, 22) === "api.mapbox.com" ||
+        url.slice(10, 26) === "tiles.mapbox.com";
+      return {
+        url: isMapboxRequest
+          ? url.replace("?", "?pluginName=sheetMapper&")
+          : url
+      };
+    };
+    //YOUR TURN: add your Mapbox token
+    
+if (screen && screen.width > 768) {
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXRsbyIsImEiOiJjam5mdDVldmkwbTJ6M3BwNW13ZXhuYXM4In0.gikvkhPkud0GJy1FxG6-Zg'; //Mapbox token 
+
+
+    var bounds = [
+[18.98132, 47.46690], // Southwest coordinates
+[19.10294, 47.52906] // Northeast coordinates
+];
+    var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/atlo/clr66xmlv01cr01r56zbld1u1', // YOUR TURN: choose a style: https://docs.mapbox.com/api
+      projection: 'mercator',
+      center: [19.04213, 47.49799],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 13.5,// starting zoom
+      maxBounds: bounds,
+      transformRequest: transformRequest
+    });
+  };
+
+if (screen && screen.width <= 768 && navigator.userAgent.match(/iPad|Android|webOS|iPhone|iPod|Blackberry/i)) {
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXRsbyIsImEiOiJjam5mdDVldmkwbTJ6M3BwNW13ZXhuYXM4In0.gikvkhPkud0GJy1FxG6-Zg'; //Mapbox token 
+
+
+    var bounds = [
+[19.00021, 47.44136], // Southwest coordinates
+[19.08049, 47.54750] // Northeast coordinates
+];
+    var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/atlo/clr66xmlv01cr01r56zbld1u1', // YOUR TURN: choose a style: https://docs.mapbox.com/api
+      projection: 'mercator',
+      center: [19.03961, 47.49620],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 12.7,// starting zoom
+      maxBounds: bounds,
+      transformRequest: transformRequest
+    });
+  };
+
+  if (screen && screen.width > 768 && navigator.userAgent.match(/iPad|Android|webOS|iPhone|iPod|Blackberry/i)) {
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXRsbyIsImEiOiJjam5mdDVldmkwbTJ6M3BwNW13ZXhuYXM4In0.gikvkhPkud0GJy1FxG6-Zg'; //Mapbox token 
+
+
+    var bounds = [
+[18.94689, 47.46948], // Southwest coordinates
+[19.13349, 47.52657] // Northeast coordinates
+];
+    var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/atlo/clr66xmlv01cr01r56zbld1u1', // YOUR TURN: choose a style: https://docs.mapbox.com/api
+      projection: 'mercator',
+      center: [19.04019, 47.49807],
+      pitch: 0.00,
+      bearing:0,// starting position [lng, lat]
+      zoom: 12.57,// starting zoom
+      maxBounds: bounds,
+      transformRequest: transformRequest
+    });
+  };
+
+ let airports = [];
+
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+      var popup = new mapboxgl.Popup({ className: "popup",
+    closeButton: false,
+    closeOnClick: false,
+    offset: [0, 0]
+  });
+
+       var slider = document.getElementById('slider');
+    var sliderValue = document.getElementById('slider-value');
+
+ const filterEl = document.getElementById('feature-filter');
+    const listingEl = document.getElementById('feature-listing');
+
+    function flyToStore(currentFeature) {
+  map.flyTo({
+    center: currentFeature.geometry.coordinates,
+    zoom: 17
+  });
+}
+
+    function renderListings(features) {
+        const empty = document.createElement('p');
+        // Clear any existing listings
+        listingEl.innerHTML = '';
+        if (features.length) {
+            for (const feature of features) {
+                const itemLink = document.createElement('a');
+                const label = `${feature.properties.kepcim} (${feature.properties.evszam}, ${feature.properties.leltariszam})`;
+                 
+                
+                itemLink.target = '_blank';
+                itemLink.textContent = label;
+                itemLink.addEventListener('mouseover', () => {
+                    // Highlight corresponding feature on the map
+                    popup
+                        .setLngLat(feature.geometry.coordinates)
+                        .setHTML('<span style="font-weight:bold; font-family:Old Standard TT">Cím: </span><span style="font-family:Old Standard TT">' + feature.properties.kepcim + '</span><br><span style="font-weight:bold; font-family:Old Standard TT">Évszám: </span><span style="font-family:Old Standard TT">' + feature.properties.evszam + '</span><br><img class="erdelyikep"src="'+ feature.properties.image +'">')
+                        .addTo(map);
+                        $('body').css("cursor",'pointer'); 
+                });
+                itemLink.addEventListener('mouseleave', () => {
+                    // Highlight corresponding feature on the map
+                    popup.remove();
+                    $('body').css("cursor",'default'); 
+                });
+
+                itemLink.addEventListener('click', () => {
+                  flyToStore(feature);
+$('#textpanela').html("<h2>"+feature.properties.kepcim+"</h2><p>"+feature.properties.evszam+"</p>");
+$('#textpanelb').html("<img class='erdelyikep'src="+ feature.properties.image +">");
+$('#textpanelc').html("<p>Kattints a képre a nagyobb nézethez!</p><p>Leírás: "+ feature.properties.kepleiras +"</p><p>Technika: "+ feature.properties.technika +"</p><p>Fényképész: "+ feature.properties.fenykepesz +"</p><p>Méret: "+ feature.properties.meret +"</p><p>Leltári szám: "+ feature.properties.leltariszam +"</p><p>Városrész: "+ feature.properties.lelohely +"</p>");$("#textpanel2").html("");
+                ;$('#infopanel').removeClass('infopanelmarginleft');$('#infopanel').css('opacity',1);
+                $('#infopanel2').removeClass('infopanelmarginleft');$('#infopanel2').css('opacity',1);
+                });
+                listingEl.appendChild(itemLink);
+                
+            }
+
+            // Show the filter input
+            filterEl.parentNode.style.display = 'block';
+        } else if (features.length === 0 && filterEl.value !== '') {
+            empty.textContent = 'Nincs a keresésnek megfelelő találat.';
+            listingEl.appendChild(empty);
+        } else {
+            empty.textContent = 'Nagyítson bele vagy mozgassa a térképet a tételek listázásához!';
+            listingEl.appendChild(empty);
+
+            // Hide the filter input
+            filterEl.parentNode.style.display = 'none';
+
+            // remove features filter
+            map.setFilter('csvData2', ['has', 'kepcim']);
+        }
+    }
+
+      function normalize(string) {
+        return string.trim().toLowerCase();
+    }
+
+    // Because features come from tiled vector data,
+    // feature geometries may be split
+    // or duplicated across tile boundaries.
+    // As a result, features may appear
+    // multiple times in query results.
+    function getUniqueFeatures(features, comparatorProperty) {
+        const uniqueIds = new Set();
+        const uniqueFeatures = [];
+        for (const feature of features) {
+            const id = feature.properties[comparatorProperty];
+            if (!uniqueIds.has(id)) {
+                uniqueIds.add(id);
+                uniqueFeatures.push(feature);
+            }
+        }
+        return uniqueFeatures;
+    }
+
+
+    $(document).ready(function () {
+      $.ajax({
+        type: "GET",
+        //YOUR TURN: Replace with csv export link
+        url: 'https://docs.google.com/spreadsheets/d/13V8XkBe9W9_q7UDKcNMwCXKQsA7rQIiw0LAu91RGolk/gviz/tq?tqx=out:csv&sheet=pontok',
+        dataType: "text",
+        success: function (csvData) { makeGeoJSON(csvData); }
+      });
+
+
+
+      function makeGeoJSON(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function (err, data) {
+          map.on('load', function () {
+
+         
+map.addSource('ujoldbp-335h7x', {
+            'type': 'raster',
+            'url': 'mapbox://atlo.5t5247vs'
+        });
+        map.addLayer({
+            'id': 'ujoldbp-335h7x',
+            'source': 'ujoldbp-335h7x',
+            'type': 'raster',
+            'layout': {
+            'visibility':'visible'},
+            'paint':{'raster-opacity':0}
+        });
+
+        map.addLayer({
+'id': 'csvData2',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+'type': 'circle',
+'paint': {
+'circle-color': '#4264fb',
+'circle-radius': 4,
+'circle-stroke-width': 0,
+'circle-stroke-color': '#ffffff',
+'circle-opacity':0,
+}
+});
+ 
+              map.addLayer({
+              'id': 'csvData',
+              'type': 'symbol',
+              'source': {
+                'type': 'geojson',
+                'data': data
+              },
+               'layout': {
+     "visibility": "visible",
+     "icon-image": "attraction1",
+     "icon-size":1.3,
+     "icon-padding":0
+},
+              'paint': {}
+            });
+
+
+              
+
+
+          map.on('movestart', () => {
+            // reset features filter as the map starts moving
+            map.setFilter('csvData2', ['has', 'kepcim']);
+        });
+
+        map.on('moveend', () => {
+            const features = map.queryRenderedFeatures({ layers: ['csvData2'] });
+
+            if (features) {
+                const uniqueFeatures = getUniqueFeatures(features, 'leltariszam');
+               
+               var inputValue = document.getElementById("feature-filter").value;
+if (inputValue.trim() === "") {
+    // Input field is empty
+     renderListings(uniqueFeatures);
+} else {
+    // Input field has some characters
+     renderListings(filtered);
+};
+
+               
+
+               
+
+                // Store the current features in sn `airports` variable to
+                // later use for filtering on `keyup`.
+                airports = uniqueFeatures;
+            }
+        });
+
+       
+
+        filterEl.addEventListener('keyup', (e) => {
+            const value = normalize(e.target.value);
+
+            // Filter visible features that match the input value.
+            const filtered = [];
+            for (const feature of airports) {
+                const name = normalize(feature.properties.kepcim);
+                const code = normalize(feature.properties.leltariszam);
+                const year = normalize(feature.properties.evszam);
+                if (name.includes(value) || code.includes(value) || year.includes(value)) {
+                    filtered.push(feature);
+                }
+            }
+
+            // Populate the sidebar with filtered results
+            renderListings(filtered);
+
+            // Set the filter to populate features into the layer.
+            if (filtered.length) {
+                map.setFilter('csvData', [
+                    'match',
+                    ['get', 'leltariszam'],
+                    filtered.map((feature) => {
+                        return feature.properties.leltariszam;
+                    }),
+                    true,
+                    false
+                ]);
+            }
+        });
+
+        // Call this function on initialization
+        // passing an empty array to render an empty state
+        renderListings([]);
+
+          
+map.on('mousemove', 'csvData', function(e) {
+  map.getCanvas().style.cursor = 'pointer';
+  
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['csvData'] // replace this with the name of the layer
+  });
+
+ if (!features.length) {
+    return;
+  }
+
+  var props = features[0].properties;
+
+        var state = features[0].state;
+  
+  var feature = features[0];
+             popup.setLngLat(e.lngLat)
+                .setHTML('<span style="font-weight:bold; font-family:Old Standard TT">Cím: </span><span style="font-family:Old Standard TT">' + feature.properties.kepcim + '</span><br><span style="font-weight:bold; font-family:Old Standard TT">Évszám: </span><span style="font-family:Old Standard TT">' + feature.properties.evszam + '</span><br><img class="erdelyikep"src="'+ feature.properties.image +'">')
+                .addTo(map);
+
+        });
+
+
+        // Change it back to a pointer when it leaves.
+map.on('mouseleave', 'csvData', function () {
+map.getCanvas().style.cursor = 'default';
+popup.remove();
+}); 
+
+
+slider.addEventListener('input', (e) => {
+            
+
+            map.setPaintProperty(
+                'ujoldbp-335h7x',
+                'raster-opacity',
+                parseInt(($("#slider").val())) / 100
+            );
+
+            
+
+            // Value indicator
+            sliderValue.textContent = e.target.value + '%';
+        });
+
+
+ map.on('click', function (e) {
+          var states1 = map.queryRenderedFeatures(e.point, {
+            layers: ['csvData']
+          });
+
+          if (states1.length > 0) {
+           document.getElementById('textpanela').innerHTML ="<h2>"+states1[0].properties.kepcim+"</h2><p>"+states1[0].properties.evszam+"</p>";
+document.getElementById('textpanelb').innerHTML ="<img class='erdelyikep'src="+ states1[0].properties.image +">";
+document.getElementById('textpanelc').innerHTML ="<p>Kattints a képre a nagyobb nézethez!</p><p>Leírás: "+ states1[0].properties.kepleiras +"</p><p>Technika: "+ states1[0].properties.technika +"</p><p>Fényképész: "+ states1[0].properties.fenykepesz +"</p><p>Méret: "+ states1[0].properties.meret +"</p><p>Leltári szám: "+ states1[0].properties.leltariszam +"</p><p>Városrész: "+ states1[0].properties.lelohely +"</p>";
+           document.getElementById('textpanel2').innerHTML ="";
+           $('#infopanel').removeClass('infopanelmarginleft');$('#infopanel').css('opacity',1);
+                $('#infopanel2').removeClass('infopanelmarginleft');$('#infopanel2').css('opacity',1);
+flyToStore(states1[0]);
+          } 
+
+        });  
+         
+           
+          });
+
+        });
+      };
+    });
+
+                
+
+
+  </script>
+<script>
+
+    $('#impresszum span').on('click', function() {
+
+$("#textpanel2").html("Impresszum szöveg");
+          $('#infopanel').removeClass('infopanelmarginleft');$('#fullfade').fadeIn('normal');
+      $('#infopanel').css('opacity',1);
+
+ $('#infopanel2').css('opacity',1);
+$('#infopanel2').removeClass('infopanelmarginleft');
+    });
+
+
+    $('#tobbinfo').on('click', function() {
+
+$("#textpanel2").html("<h2>Erdélyi Mór</h2><p>(1866–1934)</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/szabokrissz96/kiscellierdelyimor/erdelyiportre2.jpg'><p>Kép: Magyar Nemzeti Múzeum</p><p>1866. december 3-án született Érsekújváron, apja jómódú kereskedő volt. Családja elszegényedése után Budapestre utazott fényképészmesterséget tanulni, tanoncéveit Ellinger Edénél, a neves fotográfusnál töltötte.</p><p>Első önálló műtermét 1891-ben nyitotta meg az Erzsébet tér 18.-ban. Portréfényképészként kezdettől fogva sikeres és keresett volt, műtermét politikusok, arisztokraták, tudósok látogatták. 1894-ben megkapta az udvari fényképész címet, s a következő évben már a királyi család tagjait fényképezte.</p><p>Erdélyi a millenniumi ünnepségek (1896) idején minden jelentősebb politikai és társadalmi eseményen jelen volt, fotóit rendszeresen közölték az illusztrált lapok. 1896-ban nyitotta meg második műtermét a Kossuth Lajos utca és Ujvilág (ma Semmelweis) utca sarkán épült bérpalotában.</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/szabokrissz96/kiscellierdelyimor/erdelyimuterem.png'><br><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/szabokrissz96/kiscellierdelyimor/cegtabla1.png'><p>Az 1890-es évek második felétől egyre gyakrabban fényképezett különféle politikai és társadalmi eseményeket, új épületeket, és műemlékeket egyaránt. Segédei társaságában beutazta egész Magyarországot, végigfényképezte a kastélyokat, tájakat és embereket, néprajzi, építészettörténeti nevezetességek sorát. E képek felhasználásával jelent meg 1909-ben a 680 képet tartalmazó, több nyelvre lefordított „Magyarország” című album. Lankadatlan figyelemmel követte a fővárosban végbemenő változásokat is, szenvedélyesen fotografálta Budapest lebontásra ítélt részeit és új létesítményeit.</p><p>A párizsi világkiállításon (1900) munkásságát aranyéremmel jutalmazták. </p><p>Az 1900-as évek elejétől Erdélyi a fotográfia alkalmazásának új lehetőségeit kereste. Szorgalmazta, hogy Magyarország nevezetességeiről készített diapozitívjait hasznosítsák az iskolai oktatásban. 1908-ban – diapozitívok, szemléltető képek és taneszközök nagybani előállítására és árusítására, továbbá ismeretterjesztő mozgó-fényképfelvételek készítésére – megalapította az Uránia Szemléltető Taneszközök Gyárát. Európában elsőként kidolgozta a vetített képes szemléltető oktatás rendszerét.</p><p>Erdélyi vezető szerepet játszott a magyar fotográfiai közéletben is. 1926-ban, a Frankfurtban megrendezett nemzetközi fényképészkongresszusra őt delegálták a magyar fotográfusok képviseletében.</p><p>Gyakran publikált szaklapokban is. Írásai hűen összegezik pályafutása során kialakult szakmai nézeteit. A fotográfia elsődleges feladatának az ismeretközlést tartotta, de kifejtette, hogy az idegenforgalom fejlődése többek között a fotográfia széles körben való elterjedésének is köszönhető. </p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/szabokrissz96/kiscellierdelyimor/erdélyi.jpg'><p>Erdélyi Mór, a megszállott fényképész és zseniális üzletember 1934-ben halt meg. Műtermének gondosan katalogizált fényképei, lemezei (közel 150 ezer negatív) nagyrészt megsemmisültek, elkallódtak. Műveiből csupán azok maradtak fenn, amelyek még életében közgyűjteményekbe kerültek.<h2>Erdélyi Mór fényképei a Budapesti Történeti Múzeumban</h2><p>Erdélyi Mór fotográfusi munkássága közel ötven esztendőt ölelt fel az 1890-es évektől az 1930-as évek elejéig. Ez idő alatt mint az egyik legjelesebb budapesti fényképész több ezer képet készített a főváros utcáiról, tereiről, épületeiről és az itt élő emberekről. Városképei legnagyobb részét (több mint ezer darabot) a Budapesti Történeti Múzeum Kiscelli Múzeum (korábban Fővárosi Múzeum) őrzi.</p><p>A várostörténeti gyűjtemény legkorábban beleltározott fényképei azok az 1890-es évek közepén készült Erdélyi-felvételek (149 db), amelyek megvásárlásával Toldy László főlevéltárnok lerakta a fényképgyűjtemény alapjait. Erdélyi – akinek a fotográfia sorsával, rendeltetésével kapcsolatban is megvoltak az elképzelései – Budapestről készített fotóinak nagy részét maga is a Fővárosi Múzeumnak szánta. Az esetek egy részében ő ajánlotta megvételre felvételeit, más esetben a múzeum vezetője kérte a Fővárosi Tanácsot, hogy az általa fontosnak tartott, megörökítésre érdemes városrészekről, épületekről fényképek készítését engedélyezze Erdélyi számára. Idővel a tanács által közvetlenül megrendelt képek is a múzeumba kerültek az ügyosztályok átadásai folytán.</p><p>Témájukban Erdélyi fotográfiái rendkívül változatosak. Éppúgy dokumentálják a 19. század végén a régi belváros átalakítását, mint a 20. század első évtizedeinek városépítési programjait (iskola-, kislakásépítés), és képet adnak olyan eltűnt városrészekről, mint a Tabán vagy a régi Óbuda.</p><p>Fotótörténeti érdekesség, hogy Erdélyi – jó üzletember lévén – műtermében őrzött és archivált negatívjait évekkel később újra nagyította, majd újból eladta. A gyűjtemény így őriz olyan 19. század végi felvételeket akár 3 kópiában, amelyek más-más technikával készültek (albumin, celloidin, ezüst zselatin) akár 20–25 év különbséggel.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/szabokrissz96/kiscellierdelyimor/verzo3.png'>");
+          $('#infopanel').removeClass('infopanelmarginleft');$('#fullfade').fadeIn('normal');
+      $('#infopanel').css('opacity',1);
+
+
+$('#infopanel2').css('opacity',1);
+$('#infopanel2').removeClass('infopanelmarginleft');
+    });
+
+  $('#kreativitasclose1').on('click', function() {
+      
+$('#infopanel').addClass('infopanelmarginleft');$('#fullfade').fadeOut('normal');
+      $('#infopanel').css('opacity',0);
+
+      
+      $('#infopanel2').addClass('infopanelmarginleft');
+      $('#infopanel2').css('opacity',0);
+        setTimeout(function() {
+$("#textpanela").html("");
+$("#textpanelb").html("");
+$("#textpanelc").html("");
+$("#textpanel2").html("");
+         
+         
+        }, 1000);
+$('#people').children().removeClass('opacity50');$('#people').children().removeClass('opacity10');
+$('#connections').children().removeClass('opacity50');$('#connections').children().removeClass('opacity10');$('#connections').children().removeClass('blackstroke');
+
+    });
+
+  $('#kreativitasclose1').on('mouseover', function() {
+   
+          $('#kreativitasclosea1').css("opacity",1);
+           $('.mdiv').css("opacity",1);
+           $('.md').css("opacity",1);
+           $('#kreativitasclose1').css("cursor","pointer");
+    
+
+    });
+
+ $('#kreativitasclose1').on('mouseleave', function() {
+   
+          $('#kreativitasclosea1').css("opacity",0.7);
+          $('.mdiv').css("opacity",0.7);
+           $('.md').css("opacity",0.7);
+    $('#kreativitasclose1').css("cursor","default");
+
+    });
+
+
+ $('#kreativitasclose3').on('click', function() {
+      
+$('.map-overlay').addClass('infopanelmarginleft2');
+$('.map-overlay').css('opacity',0);
+$('.closebutton3').css('margin-left','-100%');
+
+    });
+
+
+ $('.valtogomb3').on('click', function() {
+          
+      
+      $('.map-overlay').removeClass('infopanelmarginleft2');
+    $('.map-overlay').css('opacity',1);
+    $('.closebutton3').css('margin-left','1vw');
+     
+
+
+    });
+
+  $('#kreativitasclose3').on('mouseover', function() {
+   
+          $('#kreativitasclosea3').css("opacity",1);
+           $('.mdiv').css("opacity",1);
+           $('.md').css("opacity",1);
+           $('#kreativitasclose3').css("cursor","pointer");
+    
+
+    });
+
+ $('#kreativitasclose3').on('mouseleave', function() {
+   
+          $('#kreativitasclosea3').css("opacity",0.7);
+          $('.mdiv').css("opacity",0.7);
+           $('.md').css("opacity",0.7);
+    $('#kreativitasclose3').css("cursor","default");
+
+    });
+
+
+ $('#kreativitasclose2').on('mouseover', function() {
+   
+          $('#kreativitasclosea2').css("opacity",1);
+           $('.mdiv2').css("opacity",1);
+           $('.md2').css("opacity",1);
+           $('#kreativitasclose2').css("cursor","pointer");
+    
+
+    });
+
+ $('#kreativitasclose2').on('mouseleave', function() {
+   
+          $('#kreativitasclosea2').css("opacity",0.8);
+          $('.mdiv2').css("opacity",0.8);
+           $('.md2').css("opacity",0.8);
+    $('#kreativitasclose2').css("cursor","default");
+
+    });
+
+$('#textpanelb').on('click', function() {
+          
+   
+        
+        // Set the value of the input field to the image src
+         $('.fullimgimg').attr('src', $('.erdelyikep').attr('src'));
+          $('.fullimg').css("opacity",1);
+           $('.fullimg').css("pointer-events","all");
+            $('#closeuj').css('opacity',1);
+            $('#closeuj').css('pointer-events','all');
+     
+
+    });
+
+
+$('#kreativitasclose2').on('click', function() {
+ $('.fullimg').css("opacity",0);
+           $('.fullimg').css("pointer-events","none");
+      $('#closeuj').css('opacity',0);
+      $('#closeuj').css('pointer-events','none');
+      $('.circletext').css("opacity",0);
+
+});
+
+$('.fullimgimg').on('click', function() {
+          
+   
+        
+       
+          $('.fullimg').css("opacity",0);
+           $('.fullimg').css("pointer-events","none");
+      $('#closeuj').css('opacity',0);
+      $('#closeuj').css('pointer-events','none');
+      $('.circletext').css("opacity",0);
+
+    });
+
+
+  $('.fullimgimg').on('mouseover', function() {
+    
+    $('.circletext').css("opacity",1);
+    });
+  
+
+   $('.fullimgimg').on('mouseleave', function() {
+   
+    $('.circletext').css("opacity",0);
+    });
+
+</script>
+
+<script>
+    var circletext = document.querySelector(".circletext");
+
+TweenLite.set(circletext, {
+  xPercent: 10,
+  yPercent: 30
+});
+
+window.addEventListener("mousemove", moveCircle2);
+
+function moveCircle2(e) {
+  TweenLite.to(circletext, 0.05, {
+    x: e.clientX,
+    y: e.clientY
+  });
+}
+  </script>
+
+  <script>
+let redirect_Page3 = (ele) => {
+        ele.disabled = true;
+        let tID = setTimeout(function () {
+            window.location.href = 'kiscellieng.html';
+            window.clearTimeout(tID);  
+        }, 500);}
+</script>
+
+</body>
+
+</html>
