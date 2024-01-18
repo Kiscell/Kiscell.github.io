@@ -253,8 +253,11 @@ box-shadow: 0 0 0 2px rgba(0,0,0,0);
 }
 
 #textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-#textpanel2{margin-top:-4vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-
+#textpanel2{margin-top:0vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black;text-align: justify;}
+#textpaneltext2{margin-top:-4vh;display:none;font:14px/20px 'Barlow', sans-serif}
+#textpaneltext2:hover{font-weight: bold}
+#textpaneltext1:hover{font-weight: bold}
+#textpaneltext1{margin-top:-4vh;display:none;font:14px/20px 'Barlow', sans-serif}
 #textpanela{}
 #textpanelb{}
 #textpanelc{}
@@ -612,8 +615,9 @@ box-shadow: 0 0 0 2px rgba(0,0,0,0);
 }
 
 #textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-#textpanel2{margin-top:-4vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-
+#textpanel2{margin-top:0vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+#textpaneltext2{margin-top:-4vh}
+#textpaneltext1{margin-top:-4vh}
 #textpanela{}
 #textpanelb{}
 #textpanelc{}
@@ -901,8 +905,9 @@ box-shadow: 0 0 0 2px rgba(0,0,0,0);
 }
 
 #textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-#textpanel2{margin-top:-3vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-
+#textpanel2{margin-top:0vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+#textpaneltext2{margin-top:-3vh}
+#textpaneltext1{margin-top:-3vh}
 #textpanela{}
 #textpanelb{}
 #textpanelc{}
@@ -1030,6 +1035,9 @@ z-index:500000000000000001;}
 
 
       </div>
+      <div class="custombutton2" id="textpaneltext1">Erdélyi Mór életrajza</div>
+      <div class="custombutton2" id="textpaneltext2">Erdélyi Mór fotográfiái</div>
+      
       <div id="textpanel2">
         
          
@@ -1395,8 +1403,8 @@ if (screen && screen.width > 768) {
 
 
     var bounds = [
-[18.98132, 47.46690], // Southwest coordinates
-[19.10294, 47.52906] // Northeast coordinates
+[19.00008, 47.47637], // Southwest coordinates
+[19.08623, 47.52028] // Northeast coordinates
 ];
     var map = new mapboxgl.Map({
       container: 'map', // container id
@@ -1417,8 +1425,8 @@ if (screen && screen.width <= 768 && navigator.userAgent.match(/iPad|Android|web
 
 
     var bounds = [
-[19.00021, 47.44136], // Southwest coordinates
-[19.08049, 47.54750] // Northeast coordinates
+[19.01989, 47.46882], // Southwest coordinates
+[19.05961, 47.52577] // Northeast coordinates
 ];
     var map = new mapboxgl.Map({
       container: 'map', // container id
@@ -1439,8 +1447,8 @@ if (screen && screen.width <= 768 && navigator.userAgent.match(/iPad|Android|web
 
 
     var bounds = [
-[18.94689, 47.46948], // Southwest coordinates
-[19.13349, 47.52657] // Northeast coordinates
+[19.00055, 47.48276], // Southwest coordinates
+[19.08867, 47.51238] // Northeast coordinates
 ];
     var map = new mapboxgl.Map({
       container: 'map', // container id
@@ -1507,7 +1515,7 @@ map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
                   flyToStore(feature);
 $('#textpanela').html("<h2>"+feature.properties.kepcim+"</h2><p>"+feature.properties.evszam+"</p>");
 $('#textpanelb').html("<img class='erdelyikep'src="+ feature.properties.image +">");
-$('#textpanelc').html("<p>Kattints a képre a nagyobb nézethez!</p><p>Leírás: "+ feature.properties.kepleiras +"</p><p>Technika: "+ feature.properties.technika +"</p><p>Fényképész: "+ feature.properties.fenykepesz +"</p><p>Méret: "+ feature.properties.meret +"</p><p>Leltári szám: "+ feature.properties.leltariszam +"</p><p>Városrész: "+ feature.properties.lelohely +"</p>");$("#textpanel2").html("");
+$('#textpanelc').html("<p>Kattintson a képre a nagyobb nézethez!</p><p>Leírás: "+ feature.properties.kepleiras +"</p><p>Technika: "+ feature.properties.technika +"</p><p>Fényképész: "+ feature.properties.fenykepesz +"</p><p>Méret: "+ feature.properties.meret +"</p><p>Leltári szám: "+ feature.properties.leltariszam +"</p><p>Városrész: "+ feature.properties.lelohely +"</p>");$("#textpanel2").html("");
                 ;$('#infopanel').removeClass('infopanelmarginleft');$('#infopanel').css('opacity',1);
                 $('#infopanel2').removeClass('infopanelmarginleft');$('#infopanel2').css('opacity',1);
                 });
@@ -1746,7 +1754,7 @@ slider.addEventListener('input', (e) => {
           if (states1.length > 0) {
            document.getElementById('textpanela').innerHTML ="<h2>"+states1[0].properties.kepcim+"</h2><p>"+states1[0].properties.evszam+"</p>";
 document.getElementById('textpanelb').innerHTML ="<img class='erdelyikep'src="+ states1[0].properties.image +">";
-document.getElementById('textpanelc').innerHTML ="<p>Kattints a képre a nagyobb nézethez!</p><p>Leírás: "+ states1[0].properties.kepleiras +"</p><p>Technika: "+ states1[0].properties.technika +"</p><p>Fényképész: "+ states1[0].properties.fenykepesz +"</p><p>Méret: "+ states1[0].properties.meret +"</p><p>Leltári szám: "+ states1[0].properties.leltariszam +"</p><p>Városrész: "+ states1[0].properties.lelohely +"</p>";
+document.getElementById('textpanelc').innerHTML ="<p>Kattintson a képre a nagyobb nézethez!</p><p>Leírás: "+ states1[0].properties.kepleiras +"</p><p>Technika: "+ states1[0].properties.technika +"</p><p>Fényképész: "+ states1[0].properties.fenykepesz +"</p><p>Méret: "+ states1[0].properties.meret +"</p><p>Leltári szám: "+ states1[0].properties.leltariszam +"</p><p>Városrész: "+ states1[0].properties.lelohely +"</p>";
            document.getElementById('textpanel2').innerHTML ="";
            $('#infopanel').removeClass('infopanelmarginleft');$('#infopanel').css('opacity',1);
                 $('#infopanel2').removeClass('infopanelmarginleft');$('#infopanel2').css('opacity',1);
@@ -1770,9 +1778,11 @@ flyToStore(states1[0]);
 
     $('#impresszum span').on('click', function() {
 
-$("#textpanel2").html("Adatbázis:<br>Demeter Zsuzsanna, Léczfalvy Lilla, Perényi Roland, Zsoldos Emese<br><br>Angol fordítás:<br>Szíj Barbara<br><br>Honlap:<br>Bátorfy Attila, Szabó Krisztián<br><br>A honlap az NKA Fotóművészet Kollégiuma támogatásával készült.<br><br>Kiscelli Múzeum<br>A Kiscelli Múzeum a Budapesti Történeti Múzeum tagintézménye<br>E-mail: kapcsolat@kiscellimuzeum.hu<br>Telefon: +36-1-3888560<br>Cím: 1037 Budapest, Kiscelli utca 108.<br><br>copyright © 2024 Kiscelli Múzeum<br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/kiscellilogo.png'><br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/nkalogo.png'>");
+$("#textpanel2").html("<div style='margin-top:-3vh'>Adatbázis:<br>Demeter Zsuzsanna, Léczfalvy Lilla, Perényi Roland, Zsoldos Emese<br><br>Angol fordítás:<br>Szíj Barbara<br><br>Honlap:<br>Bátorfy Attila, Szabó Krisztián<br><br>Archív térkép: Budapest székesfőváros területének térképe, 1908. (Részletek.) Kiscelli Múzeum Térkép-, Kézirat- és Nyomtatványgyűjtemény<br><br>A honlap az NKA Fotóművészet Kollégiuma támogatásával készült.<br><br>Kiscelli Múzeum<br>A Kiscelli Múzeum a Budapesti Történeti Múzeum tagintézménye<br>E-mail: kapcsolat@kiscellimuzeum.hu<br>Telefon: +36-1-3888560<br>Cím: 1037 Budapest, Kiscelli utca 108.<br><br>copyright © 2024 Kiscelli Múzeum<br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/kiscellilogo.png'><br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/nkalogo.png'></div>");
           $('#infopanel').removeClass('infopanelmarginleft');$('#fullfade').fadeIn('normal');
       $('#infopanel').css('opacity',1);
+      $('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"none");
 
  $('#infopanel2').css('opacity',1);
 $('#infopanel2').removeClass('infopanelmarginleft');
@@ -1781,7 +1791,9 @@ $('#infopanel2').removeClass('infopanelmarginleft');
 
     $('#tobbinfo').on('click', function() {
 
-$("#textpanel2").html("<h2>Erdélyi Mór</h2><p>(1866–1934)</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyiportre3.jpg'><p>Kép: Erdélyi Mór, 1930. Ismeretlen fényképező. Magyar Nemzeti Múzeum</p><p>1866. december 3-án született Érsekújváron, apja jómódú kereskedő volt. Családja elszegényedése után Budapestre utazott fényképészmesterséget tanulni, tanoncéveit Ellinger Edénél, a neves fotográfusnál töltötte.</p><p>Első önálló műtermét 1891-ben nyitotta meg az Erzsébet tér 18.-ban. Portréfényképészként kezdettől fogva sikeres és keresett volt, műtermét politikusok, arisztokraták, tudósok látogatták. 1894-ben megkapta az udvari fényképész címet, s a következő évben már a királyi család tagjait fényképezte.</p><p>Erdélyi a millenniumi ünnepségek (1896) idején minden jelentősebb politikai és társadalmi eseményen jelen volt, fotóit rendszeresen közölték az illusztrált lapok. 1896-ban nyitotta meg második műtermét a Kossuth Lajos utca és Ujvilág (ma Semmelweis) utca sarkán épült bérpalotában.</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyimuterem.png'><br><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/cegtabla1.png'><p>Az 1890-es évek második felétől egyre gyakrabban fényképezett különféle politikai és társadalmi eseményeket, új épületeket, és műemlékeket egyaránt. Segédei társaságában beutazta egész Magyarországot, végigfényképezte a kastélyokat, tájakat és embereket, néprajzi, építészettörténeti nevezetességek sorát. E képek felhasználásával jelent meg 1909-ben a 680 képet tartalmazó, több nyelvre lefordított „Magyarország” című album. Lankadatlan figyelemmel követte a fővárosban végbemenő változásokat is, szenvedélyesen fotografálta Budapest lebontásra ítélt részeit és új létesítményeit.</p><p>A párizsi világkiállításon (1900) munkásságát aranyéremmel jutalmazták. </p><p>Az 1900-as évek elejétől Erdélyi a fotográfia alkalmazásának új lehetőségeit kereste. Szorgalmazta, hogy Magyarország nevezetességeiről készített diapozitívjait hasznosítsák az iskolai oktatásban. 1908-ban – diapozitívok, szemléltető képek és taneszközök nagybani előállítására és árusítására, továbbá ismeretterjesztő mozgó-fényképfelvételek készítésére – megalapította az Uránia Szemléltető Taneszközök Gyárát. Európában elsőként kidolgozta a vetített képes szemléltető oktatás rendszerét.</p><p>Erdélyi vezető szerepet játszott a magyar fotográfiai közéletben is. 1926-ban, a Frankfurtban megrendezett nemzetközi fényképészkongresszusra őt delegálták a magyar fotográfusok képviseletében.</p><p>Gyakran publikált szaklapokban is. Írásai hűen összegezik pályafutása során kialakult szakmai nézeteit. A fotográfia elsődleges feladatának az ismeretközlést tartotta, de kifejtette, hogy az idegenforgalom fejlődése többek között a fotográfia széles körben való elterjedésének is köszönhető. </p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdélyi.jpg'><p>Erdélyi Mór, a megszállott fényképész és zseniális üzletember 1934-ben halt meg. Műtermének gondosan katalogizált fényképei, lemezei (közel 150 ezer negatív) nagyrészt megsemmisültek, elkallódtak. Műveiből csupán azok maradtak fenn, amelyek még életében közgyűjteményekbe kerültek.<h2>Erdélyi Mór fényképei a Budapesti Történeti Múzeumban</h2><p>Erdélyi Mór fotográfusi munkássága közel ötven esztendőt ölelt fel az 1890-es évektől az 1930-as évek elejéig. Ez idő alatt mint az egyik legjelesebb budapesti fényképész több ezer képet készített a főváros utcáiról, tereiről, épületeiről és az itt élő emberekről. Városképei legnagyobb részét (több mint ezer darabot) a Budapesti Történeti Múzeum Kiscelli Múzeum (korábban Fővárosi Múzeum) őrzi.</p><p>A várostörténeti gyűjtemény legkorábban beleltározott fényképei azok az 1890-es évek közepén készült Erdélyi-felvételek (149 db), amelyek megvásárlásával Toldy László főlevéltárnok lerakta a fényképgyűjtemény alapjait. Erdélyi – akinek a fotográfia sorsával, rendeltetésével kapcsolatban is megvoltak az elképzelései – Budapestről készített fotóinak nagy részét maga is a Fővárosi Múzeumnak szánta. Az esetek egy részében ő ajánlotta megvételre felvételeit, más esetben a múzeum vezetője kérte a Fővárosi Tanácsot, hogy az általa fontosnak tartott, megörökítésre érdemes városrészekről, épületekről fényképek készítését engedélyezze Erdélyi számára. Idővel a tanács által közvetlenül megrendelt képek is a múzeumba kerültek az ügyosztályok átadásai folytán.</p><p>Témájukban Erdélyi fotográfiái rendkívül változatosak. Éppúgy dokumentálják a 19. század végén a régi belváros átalakítását, mint a 20. század első évtizedeinek városépítési programjait (iskola-, kislakásépítés), és képet adnak olyan eltűnt városrészekről, mint a Tabán vagy a régi Óbuda.</p><p>Fotótörténeti érdekesség, hogy Erdélyi – jó üzletember lévén – műtermében őrzött és archivált negatívjait évekkel később újra nagyította, majd újból eladta. A gyűjtemény így őriz olyan 19. század végi felvételeket akár 3 kópiában, amelyek más-más technikával készültek (albumin, celloidin, ezüst zselatin) akár 20–25 év különbséggel.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+$("#textpanel2").html("<h2>Erdélyi Mór</h2><p>(1866–1934)</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyiportre3.jpg'><p>Erdélyi Mór, 1930. Ismeretlen fényképező. Magyar Nemzeti Múzeum</p><p>1866. december 3-án született Érsekújváron, apja jómódú kereskedő volt. Családja elszegényedése után Budapestre utazott fényképészmesterséget tanulni, tanoncéveit Ellinger Edénél, a neves fotográfusnál töltötte.</p><p>Első önálló műtermét 1891-ben nyitotta meg az Erzsébet tér 18.-ban. Portréfényképészként kezdettől fogva sikeres és keresett volt, műtermét politikusok, arisztokraták, tudósok látogatták. 1894-ben megkapta az udvari fényképész címet, s a következő évben már a királyi család tagjait fényképezte.</p><p>Erdélyi a millenniumi ünnepségek (1896) idején minden jelentősebb politikai és társadalmi eseményen jelen volt, fotóit rendszeresen közölték az illusztrált lapok. 1896-ban nyitotta meg második műtermét a Kossuth Lajos utca és Ujvilág (ma Semmelweis) utca sarkán épült bérpalotában.</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyimuterem.png'><br><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/cegtabla1.png'><p>Az 1890-es évek második felétől egyre gyakrabban fényképezett különféle politikai és társadalmi eseményeket, új épületeket, és műemlékeket egyaránt. Segédei társaságában beutazta egész Magyarországot, végigfényképezte a kastélyokat, tájakat és embereket, néprajzi, építészettörténeti nevezetességek sorát. E képek felhasználásával jelent meg 1909-ben a 680 képet tartalmazó, több nyelvre lefordított „Magyarország” című album. Lankadatlan figyelemmel követte a fővárosban végbemenő változásokat is, szenvedélyesen fotografálta Budapest lebontásra ítélt részeit és új létesítményeit.</p><p>A párizsi világkiállításon (1900) munkásságát aranyéremmel jutalmazták. </p><p>Az 1900-as évek elejétől Erdélyi a fotográfia alkalmazásának új lehetőségeit kereste. Szorgalmazta, hogy Magyarország nevezetességeiről készített diapozitívjait hasznosítsák az iskolai oktatásban. 1908-ban – diapozitívok, szemléltető képek és taneszközök nagybani előállítására és árusítására, továbbá ismeretterjesztő mozgó-fényképfelvételek készítésére – megalapította az Uránia Szemléltető Taneszközök Gyárát. Európában elsőként kidolgozta a vetített képes szemléltető oktatás rendszerét.</p><p>Erdélyi vezető szerepet játszott a magyar fotográfiai közéletben is. 1926-ban, a Frankfurtban megrendezett nemzetközi fényképészkongresszusra őt delegálták a magyar fotográfusok képviseletében.</p><p>Gyakran publikált szaklapokban is. Írásai hűen összegezik pályafutása során kialakult szakmai nézeteit. A fotográfia elsődleges feladatának az ismeretközlést tartotta, de kifejtette, hogy az idegenforgalom fejlődése többek között a fotográfia széles körben való elterjedésének is köszönhető. </p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdélyi.jpg'><p>Erdélyi Mór, a megszállott fényképész és zseniális üzletember 1934-ben halt meg. Műtermének gondosan katalogizált fényképei, lemezei (közel 150 ezer negatív) nagyrészt megsemmisültek, elkallódtak. Műveiből csupán azok maradtak fenn, amelyek még életében közgyűjteményekbe kerültek.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+$('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"block");
           $('#infopanel').removeClass('infopanelmarginleft');$('#fullfade').fadeIn('normal');
       $('#infopanel').css('opacity',1);
 
@@ -1789,6 +1801,21 @@ $("#textpanel2").html("<h2>Erdélyi Mór</h2><p>(1866–1934)</p><img class='erd
 $('#infopanel2').css('opacity',1);
 $('#infopanel2').removeClass('infopanelmarginleft');
     });
+
+
+$('#textpaneltext1').on('click', function() {
+$('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"block");
+      $("#textpanel2").html("<h2>Erdélyi Mór</h2><p>(1866–1934)</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyiportre3.jpg'><p>Erdélyi Mór, 1930. Ismeretlen fényképező. Magyar Nemzeti Múzeum</p><p>1866. december 3-án született Érsekújváron, apja jómódú kereskedő volt. Családja elszegényedése után Budapestre utazott fényképészmesterséget tanulni, tanoncéveit Ellinger Edénél, a neves fotográfusnál töltötte.</p><p>Első önálló műtermét 1891-ben nyitotta meg az Erzsébet tér 18.-ban. Portréfényképészként kezdettől fogva sikeres és keresett volt, műtermét politikusok, arisztokraták, tudósok látogatták. 1894-ben megkapta az udvari fényképész címet, s a következő évben már a királyi család tagjait fényképezte.</p><p>Erdélyi a millenniumi ünnepségek (1896) idején minden jelentősebb politikai és társadalmi eseményen jelen volt, fotóit rendszeresen közölték az illusztrált lapok. 1896-ban nyitotta meg második műtermét a Kossuth Lajos utca és Ujvilág (ma Semmelweis) utca sarkán épült bérpalotában.</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyimuterem.png'><br><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/cegtabla1.png'><p>Az 1890-es évek második felétől egyre gyakrabban fényképezett különféle politikai és társadalmi eseményeket, új épületeket, és műemlékeket egyaránt. Segédei társaságában beutazta egész Magyarországot, végigfényképezte a kastélyokat, tájakat és embereket, néprajzi, építészettörténeti nevezetességek sorát. E képek felhasználásával jelent meg 1909-ben a 680 képet tartalmazó, több nyelvre lefordított „Magyarország” című album. Lankadatlan figyelemmel követte a fővárosban végbemenő változásokat is, szenvedélyesen fotografálta Budapest lebontásra ítélt részeit és új létesítményeit.</p><p>A párizsi világkiállításon (1900) munkásságát aranyéremmel jutalmazták. </p><p>Az 1900-as évek elejétől Erdélyi a fotográfia alkalmazásának új lehetőségeit kereste. Szorgalmazta, hogy Magyarország nevezetességeiről készített diapozitívjait hasznosítsák az iskolai oktatásban. 1908-ban – diapozitívok, szemléltető képek és taneszközök nagybani előállítására és árusítására, továbbá ismeretterjesztő mozgó-fényképfelvételek készítésére – megalapította az Uránia Szemléltető Taneszközök Gyárát. Európában elsőként kidolgozta a vetített képes szemléltető oktatás rendszerét.</p><p>Erdélyi vezető szerepet játszott a magyar fotográfiai közéletben is. 1926-ban, a Frankfurtban megrendezett nemzetközi fényképészkongresszusra őt delegálták a magyar fotográfusok képviseletében.</p><p>Gyakran publikált szaklapokban is. Írásai hűen összegezik pályafutása során kialakult szakmai nézeteit. A fotográfia elsődleges feladatának az ismeretközlést tartotta, de kifejtette, hogy az idegenforgalom fejlődése többek között a fotográfia széles körben való elterjedésének is köszönhető. </p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdélyi.jpg'><p>Erdélyi Mór, a megszállott fényképész és zseniális üzletember 1934-ben halt meg. Műtermének gondosan katalogizált fényképei, lemezei (közel 150 ezer negatív) nagyrészt megsemmisültek, elkallódtak. Műveiből csupán azok maradtak fenn, amelyek még életében közgyűjteményekbe kerültek.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+
+});
+
+$('#textpaneltext2').on('click', function() {
+$('#textpaneltext2').css('display',"none");
+      $('#textpaneltext1').css('display',"block");
+      $("#textpanel2").html("<h2>Erdélyi Mór fotográfiái a Kiscelli Múzeum Fényképgyűjteményében</h2><p>Erdélyi Mór fotográfusi munkássága közel ötven esztendőt ölelt fel az 1890-es évektől az 1930-as évek elejéig. Ez idő alatt mint az egyik legjelesebb budapesti fényképész több ezer képet készített a főváros utcáiról, tereiről, épületeiről és az itt élő emberekről. Városképei legnagyobb részét (több mint ezer darabot) a Budapesti Történeti Múzeum Kiscelli Múzeum (korábban Fővárosi Múzeum) őrzi.</p><p>A várostörténeti gyűjtemény legkorábban beleltározott fényképei azok az 1890-es évek közepén készült Erdélyi-felvételek (149 db), amelyek megvásárlásával Toldy László főlevéltárnok lerakta a fényképgyűjtemény alapjait. Erdélyi – akinek a fotográfia sorsával, rendeltetésével kapcsolatban is megvoltak az elképzelései – Budapestről készített fotóinak nagy részét maga is a Fővárosi Múzeumnak szánta. Az esetek egy részében ő ajánlotta megvételre felvételeit, más esetben a múzeum vezetője kérte a Fővárosi Tanácsot, hogy az általa fontosnak tartott, megörökítésre érdemes városrészekről, épületekről fényképek készítését engedélyezze Erdélyi számára. Idővel a tanács által közvetlenül megrendelt képek is a múzeumba kerültek az ügyosztályok átadásai folytán.</p><p>Témájukban Erdélyi fotográfiái rendkívül változatosak. Éppúgy dokumentálják a 19. század végén a régi belváros átalakítását, mint a 20. század első évtizedeinek városépítési programjait (iskola-, kislakásépítés), és képet adnak olyan eltűnt városrészekről, mint a Tabán vagy a régi Óbuda.</p><p>Fotótörténeti érdekesség, hogy Erdélyi – jó üzletember lévén – műtermében őrzött és archivált negatívjait évekkel később újra nagyította, majd újból eladta. A gyűjtemény így őriz olyan 19. század végi felvételeket akár 3 kópiában, amelyek más-más technikával készültek (albumin, celloidin, ezüst zselatin) akár 20–25 év különbséggel.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+
+});
 
   $('#kreativitasclose1').on('click', function() {
       
@@ -1803,6 +1830,8 @@ $("#textpanela").html("");
 $("#textpanelb").html("");
 $("#textpanelc").html("");
 $("#textpanel2").html("");
+$('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"none");
          
          
         }, 1000);

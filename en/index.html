@@ -253,8 +253,11 @@ box-shadow: 0 0 0 2px rgba(0,0,0,0);
 }
 
 #textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-#textpanel2{margin-top:-4vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-
+#textpanel2{margin-top:0vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black;text-align: justify}
+#textpaneltext2{margin-top:-4vh;display:none;font:14px/20px 'Barlow', sans-serif}
+#textpaneltext2:hover{font-weight: bold}
+#textpaneltext1:hover{font-weight: bold}
+#textpaneltext1{margin-top:-4vh;display:none;font:14px/20px 'Barlow', sans-serif}
 #textpanela{}
 #textpanelb{}
 #textpanelc{}
@@ -426,6 +429,7 @@ z-index:500000000000000001;}
 
 .erdelyikep{width:100%;height:auto;pointer-events: all!important}
 .erdelyikep3{width:100%;height:auto;pointer-events: all!important}
+
 .erdelyikep:hover{cursor: pointer}
 .erdelyikep2{width:50%;margin-left:25%;height:auto;padding-top:2vh}
     .popup .mapboxgl-popup-content {
@@ -611,8 +615,9 @@ box-shadow: 0 0 0 2px rgba(0,0,0,0);
 }
 
 #textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-#textpanel2{margin-top:-4vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-
+#textpanel2{margin-top:0vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+#textpaneltext2{margin-top:-4vh}
+#textpaneltext1{margin-top:-4vh}
 #textpanela{}
 #textpanelb{}
 #textpanelc{}
@@ -900,8 +905,9 @@ box-shadow: 0 0 0 2px rgba(0,0,0,0);
 }
 
 #textpanel{margin-top:2vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-#textpanel2{margin-top:-3vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
-
+#textpanel2{margin-top:0vh;margin-left:2vw;margin-right:2vw;margin-bottom:5vh;color:black}
+#textpaneltext2{margin-top:-3vh}
+#textpaneltext1{margin-top:-3vh}
 #textpanela{}
 #textpanelb{}
 #textpanelc{}
@@ -997,7 +1003,6 @@ z-index:500000000000000001;}
  }
 
 
- 
 
 
   </style>
@@ -1028,6 +1033,8 @@ z-index:500000000000000001;}
 
 
       </div>
+       <div class="custombutton2" id="textpaneltext1">Biography of Mór Erdélyi</div>
+      <div class="custombutton2" id="textpaneltext2">Photographs of Mór Erdélyi</div>
       <div id="textpanel2">
         
          
@@ -1393,8 +1400,8 @@ if (screen && screen.width > 768) {
 
 
     var bounds = [
-[18.98132, 47.46690], // Southwest coordinates
-[19.10294, 47.52906] // Northeast coordinates
+[19.00008, 47.47637], // Southwest coordinates
+[19.08623, 47.52028] // Northeast coordinates
 ];
     var map = new mapboxgl.Map({
       container: 'map', // container id
@@ -1415,8 +1422,8 @@ if (screen && screen.width <= 768 && navigator.userAgent.match(/iPad|Android|web
 
 
     var bounds = [
-[19.00021, 47.44136], // Southwest coordinates
-[19.08049, 47.54750] // Northeast coordinates
+[19.01989, 47.46882], // Southwest coordinates
+[19.05961, 47.52577] // Northeast coordinates
 ];
     var map = new mapboxgl.Map({
       container: 'map', // container id
@@ -1437,8 +1444,8 @@ if (screen && screen.width <= 768 && navigator.userAgent.match(/iPad|Android|web
 
 
     var bounds = [
-[18.94689, 47.46948], // Southwest coordinates
-[19.13349, 47.52657] // Northeast coordinates
+[19.00055, 47.48276], // Southwest coordinates
+[19.08867, 47.51238] // Northeast coordinates
 ];
     var map = new mapboxgl.Map({
       container: 'map', // container id
@@ -1768,10 +1775,11 @@ flyToStore(states1[0]);
 
     $('#impresszum span').on('click', function() {
 
-$("#textpanel2").html("Database:<br>Zsuzsanna Demeter, Lilla Léczfalvy, Roland Perényi, Emese Zsoldos<br><br>English translation:<br>Barbara Szíj<br><br>Website:<br>Attila Bátorfy, Krisztián Szabó<br><br>The website was made with the support of the College of Photography (Fotóművészet Kollégiuma) of the National Cultural Fund of Hungary.<br><br>Kiscell Museum<br>Kiscell Museum is part of Budapest History Museum.<br>E-mail: kapcsolat@kiscellimuzeum.hu<br>Phone: +36-1-3888560<br>Address: 1037 Budapest, Kiscelli utca 108.<br><br>copyright © 2024 Kiscell Museum<br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/kiscellilogo.png'><br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/nkalogo.png'>");
+$("#textpanel2").html("<div style='margin-top:-3vh'>Database:<br>Zsuzsanna Demeter, Lilla Léczfalvy, Roland Perényi, Emese Zsoldos<br><br>English translation:<br>Barbara Szíj<br><br>Website:<br>Attila Bátorfy, Krisztián Szabó<br><br>Historic map: Map of the Budapest Capital Area, 1908. (sections.) Kiscell Museum Map, Manuscript, and Print Collection<br><br>The website was made with the support of the College of Photography (Fotóművészet Kollégiuma) of the National Cultural Fund of Hungary.<br><br>Kiscell Museum<br>Kiscell Museum is part of Budapest History Museum.<br>E-mail: kapcsolat@kiscellimuzeum.hu<br>Phone: +36-1-3888560<br>Address: 1037 Budapest, Kiscelli utca 108.<br><br>copyright © 2024 Kiscell Museum<br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/kiscellilogo.png'><br><img class='erdelyikep4'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/nkalogo.png'></div>");
           $('#infopanel').removeClass('infopanelmarginleft');$('#fullfade').fadeIn('normal');
       $('#infopanel').css('opacity',1);
-
+$('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"none");
  $('#infopanel2').css('opacity',1);
 $('#infopanel2').removeClass('infopanelmarginleft');
     });
@@ -1779,7 +1787,9 @@ $('#infopanel2').removeClass('infopanelmarginleft');
 
     $('#tobbinfo').on('click', function() {
 
-$("#textpanel2").html("<h2>Mór Erdélyi</h2><p>(1866–1934)</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyiportre3.jpg'><p>Image: Mór Erdélyi, 1930. Unknown photographer. Hungarian National Museum</p><p>Mór Erdélyi was born on 3 December 1866 in Érsekújvár (today Nové Zámky) as the son of a wealthy merchant. After the impoverishment of his family, he went to Budapest to study photography, spending his apprenticeship with the renowned photographer Ede Ellinger.</p><p>He opened his first independent studio at 18 Erzsébet Square in 1891. From the very beginning he was successful and in demand as a portrait photographer. His studio was visited by politicians, aristocrats and scientists. In 1894 he was awarded the title of Court Photographer and the following year he was photographing members of the royal family.</p><p>During the millennium celebrations (1896), Erdélyi was present at all major political and social events and his photographs were regularly published in illustrated newspapers. In 1896, he opened his second studio in a tenement building on the corner of Kossuth Lajos Street and Ujvilág (now Semmelweis) Street in the inner city of Pest. </p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyimuterem.png'><br><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/cegtabla1.png'><p>From the second half of the 1890s, he photographed more and more frequently various political and social events, new buildings and historical monuments. In the company of his assistants, he travelled all over Hungary, photographing castles, landscapes and people, as well as a range of ethnographic and architectural landmarks. These pictures were used to publish an album titled “Hungary” in 1909, which contains 680 pictures and has been translated into several languages. He was also a keen observer of the changes taking place in the capital, passionately photographing parts of Budapest condemned to demolition as well as new constructions.</p><p>His work was awarded a gold medal at the Paris Exposition (1900).</p><p>From the early 1900s Erdélyi sought new ways of using photography. In 1908, he founded the Uránia Educational Teaching Aids Factory for the wholesale production and sale of slides, illustrative pictures and teaching aids, as well as for the production of educational moving photographs. He was the first in Europe to develop a system of projected visual education.</p><p>He also played a leading role in the public life of Hungarian photography in Transylvania. In 1926, he was delegated to represent Hungarian photographers at the International Congress of Photographers in Frankfurt.</p><p>He also published frequently in professional journals. His writings faithfully summarize the professional views he developed during his career. He considered the primary mission of photography to be the dissemination of knowledge, but he explained that the development of tourism was also due, among other things, to the widespread dissemination of photography.</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdélyi.jpg'><p>Mór Erdélyi, an obsessive photographer and business genius, died in 1934. The carefully catalogued photographs and plates from his studio (nearly 150,000 negatives) were largely destroyed and lost. The only surviving works are those that entered public collections during his lifetime.<h2>Mór Erdélyi's photographs in the Budapest History Museum</h2><p>Mór Erdélyi's career lasted for nearly fifty years from the 1890s to the early 1930s. During this time he took several thousand shots of the streets, squares, buildings and people of the capital as one of the leading Budapest photographers. Most of his cityscapes (over one thousand items) are preserved at the Kiscell Museum (earlier Municipal Museum) of the Budapest History Museum.</p><p>The photos of the historical collection of the city that were the first to be inventoried are the Erdélyi shots taken in the mid-1890s (149 items) purchased by chief archivist László Toldy to lay the foundations of the photographic collection. Erdélyi, who had clear views on the future and purpose of photography, also meant to deposite most of his photos of Budapest sights in the Municipal Museum. Some of his shots were offered for sale by him, in other cases the leader of the museum asked the Municipal Council to give Erdélyi permission to take photos of neighbourhoods and buildings deemed worthy of perpetuation. Later the photos ordered by the Council were also forwarded to the museum.</p><p>Erdélyi's photos are thematically widely varied. They document the transformation of the old city centre at the end of the 19th century and the developments of the early 20th (school and housing constructions) alike, besides documenting the neighbourhood - Tabán, old Óbuda - that perished almost without a trace.</p><p>It is a photo historical curiosity that - being a good businessman - Erdélyi redeveloped his negatives preserved and archived in his studio and sold them again years later. The collection thus contains some late 19th century photographs that have as many as three copies developed with different techniques (albumen, collodion print, silver gelatine) at sometimes 20–25-year intervals.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+$("#textpanel2").html("<h2>Mór Erdélyi</h2><p>(1866–1934)</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyiportre3.jpg'><p>Mór Erdélyi, 1930. Unknown photographer. Hungarian National Museum</p><p>Mór Erdélyi was born on 3 December 1866 in Érsekújvár (today Nové Zámky) as the son of a wealthy merchant. After the impoverishment of his family, he went to Budapest to study photography, spending his apprenticeship with the renowned photographer Ede Ellinger.</p><p>He opened his first independent studio at 18 Erzsébet Square in 1891. From the very beginning he was successful and in demand as a portrait photographer. His studio was visited by politicians, aristocrats and scientists. In 1894 he was awarded the title of Court Photographer and the following year he was photographing members of the royal family.</p><p>During the millennium celebrations (1896), Erdélyi was present at all major political and social events and his photographs were regularly published in illustrated newspapers. In 1896, he opened his second studio in a tenement building on the corner of Kossuth Lajos Street and Ujvilág (now Semmelweis) Street in the inner city of Pest. </p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyimuterem.png'><br><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/cegtabla1.png'><p>From the second half of the 1890s, he photographed more and more frequently various political and social events, new buildings and historical monuments. In the company of his assistants, he travelled all over Hungary, photographing castles, landscapes and people, as well as a range of ethnographic and architectural landmarks. These pictures were used to publish an album titled “Hungary” in 1909, which contains 680 pictures and has been translated into several languages. He was also a keen observer of the changes taking place in the capital, passionately photographing parts of Budapest condemned to demolition as well as new constructions.</p><p>His work was awarded a gold medal at the Paris Exposition (1900).</p><p>From the early 1900s Erdélyi sought new ways of using photography. In 1908, he founded the Uránia Educational Teaching Aids Factory for the wholesale production and sale of slides, illustrative pictures and teaching aids, as well as for the production of educational moving photographs. He was the first in Europe to develop a system of projected visual education.</p><p>He also played a leading role in the public life of Hungarian photography in Transylvania. In 1926, he was delegated to represent Hungarian photographers at the International Congress of Photographers in Frankfurt.</p><p>He also published frequently in professional journals. His writings faithfully summarize the professional views he developed during his career. He considered the primary mission of photography to be the dissemination of knowledge, but he explained that the development of tourism was also due, among other things, to the widespread dissemination of photography.</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdélyi.jpg'><p>Mór Erdélyi, an obsessive photographer and business genius, died in 1934. The carefully catalogued photographs and plates from his studio (nearly 150,000 negatives) were largely destroyed and lost. The only surviving works are those that entered public collections during his lifetime.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+$('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"block");
           $('#infopanel').removeClass('infopanelmarginleft');$('#fullfade').fadeIn('normal');
       $('#infopanel').css('opacity',1);
 
@@ -1787,6 +1797,21 @@ $("#textpanel2").html("<h2>Mór Erdélyi</h2><p>(1866–1934)</p><img class='erd
 $('#infopanel2').css('opacity',1);
 $('#infopanel2').removeClass('infopanelmarginleft');
     });
+
+
+$('#textpaneltext1').on('click', function() {
+$('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"block");
+      $("#textpanel2").html("<h2>Mór Erdélyi</h2><p>(1866–1934)</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyiportre3.jpg'><p>Mór Erdélyi, 1930. Unknown photographer. Hungarian National Museum</p><p>Mór Erdélyi was born on 3 December 1866 in Érsekújvár (today Nové Zámky) as the son of a wealthy merchant. After the impoverishment of his family, he went to Budapest to study photography, spending his apprenticeship with the renowned photographer Ede Ellinger.</p><p>He opened his first independent studio at 18 Erzsébet Square in 1891. From the very beginning he was successful and in demand as a portrait photographer. His studio was visited by politicians, aristocrats and scientists. In 1894 he was awarded the title of Court Photographer and the following year he was photographing members of the royal family.</p><p>During the millennium celebrations (1896), Erdélyi was present at all major political and social events and his photographs were regularly published in illustrated newspapers. In 1896, he opened his second studio in a tenement building on the corner of Kossuth Lajos Street and Ujvilág (now Semmelweis) Street in the inner city of Pest. </p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdelyimuterem.png'><br><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/cegtabla1.png'><p>From the second half of the 1890s, he photographed more and more frequently various political and social events, new buildings and historical monuments. In the company of his assistants, he travelled all over Hungary, photographing castles, landscapes and people, as well as a range of ethnographic and architectural landmarks. These pictures were used to publish an album titled “Hungary” in 1909, which contains 680 pictures and has been translated into several languages. He was also a keen observer of the changes taking place in the capital, passionately photographing parts of Budapest condemned to demolition as well as new constructions.</p><p>His work was awarded a gold medal at the Paris Exposition (1900).</p><p>From the early 1900s Erdélyi sought new ways of using photography. In 1908, he founded the Uránia Educational Teaching Aids Factory for the wholesale production and sale of slides, illustrative pictures and teaching aids, as well as for the production of educational moving photographs. He was the first in Europe to develop a system of projected visual education.</p><p>He also played a leading role in the public life of Hungarian photography in Transylvania. In 1926, he was delegated to represent Hungarian photographers at the International Congress of Photographers in Frankfurt.</p><p>He also published frequently in professional journals. His writings faithfully summarize the professional views he developed during his career. He considered the primary mission of photography to be the dissemination of knowledge, but he explained that the development of tourism was also due, among other things, to the widespread dissemination of photography.</p><img class='erdelyikep3'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/erdélyi.jpg'><p>Mór Erdélyi, an obsessive photographer and business genius, died in 1934. The carefully catalogued photographs and plates from his studio (nearly 150,000 negatives) were largely destroyed and lost. The only surviving works are those that entered public collections during his lifetime.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+
+});
+
+$('#textpaneltext2').on('click', function() {
+$('#textpaneltext2').css('display',"none");
+      $('#textpaneltext1').css('display',"block");
+      $("#textpanel2").html("<h2>Photographs of Mór Erdélyi in the Photographic Collection of the Kiscell Museum</h2><p>Mór Erdélyi's career lasted for nearly fifty years from the 1890s to the early 1930s. During this time he took several thousand shots of the streets, squares, buildings and people of the capital as one of the leading Budapest photographers. Most of his cityscapes (over one thousand items) are preserved at the Kiscell Museum (earlier Municipal Museum) of the Budapest History Museum.</p><p>The photos of the historical collection of the city that were the first to be inventoried are the Erdélyi shots taken in the mid-1890s (149 items) purchased by chief archivist László Toldy to lay the foundations of the photographic collection. Erdélyi, who had clear views on the future and purpose of photography, also meant to deposite most of his photos of Budapest sights in the Municipal Museum. Some of his shots were offered for sale by him, in other cases the leader of the museum asked the Municipal Council to give Erdélyi permission to take photos of neighbourhoods and buildings deemed worthy of perpetuation. Later the photos ordered by the Council were also forwarded to the museum.</p><p>Erdélyi's photos are thematically widely varied. They document the transformation of the old city centre at the end of the 19th century and the developments of the early 20th (school and housing constructions) alike, besides documenting the neighbourhood - Tabán, old Óbuda - that perished almost without a trace.</p><p>It is a photo historical curiosity that - being a good businessman - Erdélyi redeveloped his negatives preserved and archived in his studio and sold them again years later. The collection thus contains some late 19th century photographs that have as many as three copies developed with different techniques (albumen, collodion print, silver gelatine) at sometimes 20–25-year intervals.</p><br><img class='erdelyikep2'src='https://cdn.jsdelivr.net/gh/Kiscell/erdelyimorkepek/verzo3.png'>");
+
+});
 
   $('#kreativitasclose1').on('click', function() {
       
@@ -1801,7 +1826,8 @@ $("#textpanela").html("");
 $("#textpanelb").html("");
 $("#textpanelc").html("");
 $("#textpanel2").html("");
-         
+         $('#textpaneltext1').css('display',"none");
+      $('#textpaneltext2').css('display',"none");
          
         }, 1000);
 $('#people').children().removeClass('opacity50');$('#people').children().removeClass('opacity10');
